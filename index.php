@@ -44,7 +44,7 @@ if(isset($_SESSION['mdp']))
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="index.php">Accueil</a></li>
-          <li><a href="vue/boutique.php">Mes Objets</a></li>
+          <li><a href="vue/mesobjets.php">Mes Objets</a></li>
           <?php 
           /*  if(isset($_SESSION['accronyme']))
           {
@@ -54,15 +54,7 @@ if(isset($_SESSION['mdp']))
           <li><a href="<?php echo $event; ?>">Echanger</a></li>
           <li><a href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a></li>
           <li><a href="<?php echo $sign; ?>"><?php echo $signe; ?></a></li>
-          <?php 
-          if(isset($_SESSION['nom']))
-          {
-              ?><li class="buy-tickets"><a href="vue/ticket.php">Support</a></li><?php
-          }
-          ?>
-        <?php if (isset($_SESSION['nom']) == "Admin") { ?>
-            <li class="buy-tickets"><a href="vue/ticket.php">Ticket Support</a></li>
-        <?php } ?>
+          
           
         </ul>
       </nav>

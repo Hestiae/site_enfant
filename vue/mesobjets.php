@@ -2,19 +2,27 @@
 session_start();
 //sleep(10);
 require_once("../controleur/leControleur.php");
-$unControleur = new leControleur("localhost","event","root","");
-$result1 = $unControleur->selectPartenaire();
-$result = $unControleur->selectProduit(); 
-$result2 = $unControleur->selectPromos();
-$resultp1 = $unControleur->countProduit1();
-$resultp2 = $unControleur->countProduit2();
-if (isset($_POST['ajouter'])){
-   $envoi = array ("valeur"=>$_POST['valeur'],
-         "id_telephone"=>$_POST['id_tel']
+$unControleur = new leControleur("localhost","maternelle","root","");
+$id_enfant = $_SESSION['id_enfant'];
+$result = $unControleur->selectObjetsByChild($id_enfant);
+if(isset($_POST["ajouter"]))
+      {
+         $envoi = array ("Nom"=>$_POST['Nom'], 
+         "Prix"=>$_POST['Prix'],
+         "Img"=>'/img/'.$_POST['Nom'].'_'.$_SESSION['id_enfant'].'.png',
+		 "Id_enfant"=>$_SESSION['id_enfant']
         );
-         $unControleur->insert("promos",$envoi); 
-         header('Location: boutique.php');
-}
+         $unControleur->insert("Objet",$envoi);
+         
+        $NomObj = $_POST["Nom"].'_'.$_SESSION['id_enfant'];
+        $image_name1 = $_FILES['Img']['name'];
+	$image_type1 = $_FILES['Img']['type'];
+	$image_size1 = $_FILES['Img']['size'];
+	$image_tmp_name1= $_FILES['Img']['tmp_name'];
+        move_uploaded_file($image_tmp_name1,"../img/$NomObj.png");
+        header('Location: mesobjets.php');
+          exit;
+        }
   ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -49,7 +57,7 @@ if (isset($_POST['ajouter'])){
 <div>
   <?php 
 
-      require_once("affichage/vueBoutique.php");
+      require_once("affichage/vueMesObjets.php");
   ?>
 </div>
 <footer id="footer">

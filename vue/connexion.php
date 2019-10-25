@@ -7,12 +7,10 @@ if(isset($_POST["Seconnecter"]))
     $nom = $_POST['nom'];
     $mdp = $_POST['mdp'];  
         $resultat = $unControleur->verifCon ($nom, $mdp);
-        //var_dump($resultat);
         if (isset($resultat['Nom'])) {
-            $_SESSION['id_enfant'] = $resultat['id_enfant'];
-            $_SESSION['nom'] = $resultat['nom'];
+            $_SESSION['id_enfant'] = $resultat['Id_enfant'];
+            $_SESSION['nom'] = $resultat['Nom'];
             $_SESSION['mdp'] = $resultat['mdp'];
-			
             header('location: ../index.php');
         } else {
             echo" Connexion impossible ! Veuillez vérifier vos identifiants !";

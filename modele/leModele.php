@@ -157,6 +157,23 @@ public function selectEvent()
             return $result;
         }
     }
+	public function selectObjetsByChild($id_enfant)
+    {
+    if ($this->unPdo != null) {
+            // selection de toutes les données
+            $requete = "select * from Objet where id_enfant = :id_enfant;";
+			$donnees = array(":id_enfant"=>$id_enfant);   
+            // preparation de la requete avant execution
+            $select = $this->unPdo->prepare($requete);
+
+            // exection de la requete
+            $select->execute($donnees);
+
+            // extraction des données
+            $result = $select->fetchAll();
+            return $result;
+        }
+    }
     
      public function selectLieu()
     {

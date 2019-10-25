@@ -1,50 +1,25 @@
 <?php
 session_start();
       require_once("../controleur/leControleur.php");
-      $unControleur = new leControleur("localhost","event","root","");
-      if(isset($_POST["sinscrir"]))
+      $unControleur = new leControleur("localhost","maternelle","root","");
+      if(isset($_POST["sinscrire"]))
       {
          $envoi = array ("nom"=>$_POST['nom'], 
          "prenom"=>$_POST['prenom'],
-         "email"=>$_POST['email'],
-         "mdp"=>$_POST['mdp'], 
-         "telephone"=>$_POST['telephone'],
-         "date_naissance"=>$_POST['date_naissance'],
-         "adresse"=>$_POST['adresse'],
-         "code_postal"=>$_POST['code_postal'],
-         "role"=>$_POST['role']
+         "mdp"=>$_POST['mdp'],
+         "solde"=>0
         );
-         $unControleur->insert("personne",$envoi);
+         $unControleur->insert("enfant",$envoi);
           if(isset($resultat['nom']))
           {
-            $_SESSION['id_personne'] = $resultat['id_personne'];
+            $_SESSION['id_enfant'] = $resultat['id_enfant'];
             $_SESSION['mdp'] = $resultat['mdp'];
-            $_SESSION['email'] = $resultat['email'];
             $_SESSION['nom'] = $resultat['nom'];
             $_SESSION['prenom'] = $resultat['prenom'];
           }
           header('location: connexion.php');
         }
-        if(isset($_POST["sinscrire"]))
-        {
-          $envoi = array ("accronyme"=>$_POST['accronyme'], 
-          "nom_marque"=>$_POST['nom_marque'],
-          "mdp"=>$_POST['mdp'], 
-          "date_debut"=>$_POST['date_debut'], 
-          "adresse"=>$_POST['adresse']
-         );
-          $unControleur->insert("partenaire",$envoi);
-            if(isset($resultat['nom_marque']))
-            {
-              $_SESSION['id_partenaire'] = $resultat['id_partenaire'];
-              $_SESSION['accronyme'] = $resultat['accronyme'];
-              $_SESSION['mdp'] = $resultat['mdp'];
-              $_SESSION['nom_marque'] = $resultat['nom_marque'];
-              $_SESSION['adresse'] = $resultat['adresse'];
-            }
-            header('location: connexion.php');
-            //var_dump( $envoi);
-          }
+        
   ?>
 <!DOCTYPE html>
 <html lang="fr">

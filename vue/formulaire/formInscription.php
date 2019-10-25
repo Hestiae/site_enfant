@@ -57,9 +57,9 @@ body {
   color: #4CAF50;
   text-decoration: none;
 }
-.form .login-form {
-  display: none;
-}
+// .form .login-form {
+  // display: none;
+// }
 .infoo {
   margin: 50px auto;
   text-align: center;
@@ -83,37 +83,16 @@ body {
   color: #EF3B3A;
 }
 </style>
+
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div id="login_page" class="login-page">
   <div class="form">
-    <form id="register_form" method="POST" class="register-form">
-      <input type="text" name="nom" placeholder="Nom">
-      <input type="text" name="prenom" placeholder="Prénom">
-      <input type="text" name="email" placeholder="Adresse email" />
-      <input type="password" name="mdp" placeholder="password" />
-      <input type="text" name="telephone" placeholder="N° Télephone" />
-      <input type="date" name="date_naissance" placeholder="Votre date de naissance">
-      <input type="text" name="adresse" placeholder="Adresse">
-      <input type="text" name="code_postal" placeholder="Code postal">
-      <input type="hidden" name="role" value="ROLE_USER" />
-      <input type="submit" class="btn" name ="sinscrir" value="S'inscrire" />
-      <p class="message">
-          Désirez vous faire partie de nos partenaires ?
-        <a href="#">Inscrivez vous en tant que partenaire</a>
-      </p>
-    </form>
     <form id="login_form" action="#" method="POST" class="login-form">
-      <input name="accronyme" id="acronyme" type="text" placeholder="Acronyme de l'entreprise" />
-      <input name="nom_marque" id="nom_marque" type="text" placeholder="Nom de votre Marque" />
-      <input name="mdp" id="password" type="password" placeholder="password" />
-      <input type="date" id="date_debut" name="date_debut" />
-      <input type="text"  id="adresse" name="adresse" placeholder="Adresse">
+      <input name="nom" id="nom" type="text" placeholder="Nom de l'enfant" />
+      <input name="prenom" id="prenom" type="text" placeholder="Prénom de l'enfant" />
+      <input name="mdp" id="password" type="password" placeholder="mot de passe" />
       <input id="btnLg" type="submit" class="btn" name ="sinscrire" value="S'inscrire" />
-      <p class="message">
-        Voulez vous créer un simple compte utilisateur ?
-        <a href="#">Aller au formulaire d'inscription</a>
-      </p>
     </form>
   </div>
 </div>

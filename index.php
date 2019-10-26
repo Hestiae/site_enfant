@@ -6,7 +6,7 @@ if(isset($_SESSION['mdp']))
       $linkCon ='vue/deconnexion.php';
       $sign = '';
       $signe = '';
-      $event = 'vue/evenement.php';
+      $event = 'vue/echange.php';
     }
     else
     {

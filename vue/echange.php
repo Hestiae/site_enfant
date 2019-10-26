@@ -2,18 +2,8 @@
 session_start();
 //sleep(10);
 require_once("../controleur/leControleur.php");
-$unControleur = new leControleur("localhost","event","root","");
-$result = $unControleur->selectEvent();
-$results = $unControleur->selectInscrire();
-if(isset($_POST["sub"]))
-      {
-         $envoi = array ("id_event"=>$_POST['id_event'], 
-         "id_personne"=>$_POST['id_personne'],
-         "date_inscription"=>date('Y-m-d H:i:s'),
-         "qualite"=>"influenceur"
-        );
-         $unControleur->insert("inscrire",$envoi);
-      }
+$unControleur = new leControleur("localhost","maternelle","root","");
+$result = $unControleur->selectObjetenVente();
   ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,12 +34,11 @@ if(isset($_POST["sub"]))
     require_once("NavBar.php");
     ?>
     </div>
-    </br>
   </header>
 <div>
   <?php 
 
-      require_once("affichage/vueEvent.php");
+      require_once("affichage/vueEchange.php");
   ?>
 </div>
 <footer id="footer">

@@ -96,7 +96,7 @@ public function delete($table, array $tab)
 /*
     Updaute
 */
-public function update($table, array $tab, array $id)
+public function update($table, array $tab, $id)
 {
     if ($this->unPdo == null)
     {
@@ -119,9 +119,11 @@ public function update($table, array $tab, array $id)
             implode($colonnes, ', '),
             implode($parametres, ', '),
             $id);
-    //echo $sql;
+    
     $statement = $this->unPdo->prepare($sql);
     $statement->execute($valeurs);
+	echo $sql;
+	die();
 }
 
 public function selectEvent()
@@ -129,6 +131,25 @@ public function selectEvent()
     if ($this->unPdo != null) {
             // selection de toutes les données
             $requete = "select * from event ;";
+            // preparation de la requete avant execution
+            $select = $this->unPdo->prepare($requete);
+
+            // exection de la requete
+            $select->execute();
+
+            // extraction des données
+            $result = $select->fetchAll();
+            return $result;
+            
+        }
+    }
+	
+	
+public function selectObjetenVente()
+{
+    if ($this->unPdo != null) {
+            // selection de toutes les données
+            $requete = "select * from Objet where En_vente = 1 ;";
             // preparation de la requete avant execution
             $select = $this->unPdo->prepare($requete);
 
@@ -395,6 +416,17 @@ public function selectEvent()
             $insert = $this->unPdo->prepare($requete);
             $insert->execute($donnees);
             var_dump($requete);
+
+    }
+}
+ public function updateObjet($id_objet)
+{
+    if($this->unPdo!=null)
+    {
+            $requete ="update Objet set En_vente = 1 where id_objet = :id_objet;";
+            $donnees = array(":id_objet"=>$id_objet);
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute($donnees);
 
     }
 }

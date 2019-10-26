@@ -3,7 +3,7 @@ H2 { text-align: center }
 
 </style>
 
-<h2> Mes Objets </h2>
+<h2> Liste des Objets en Vente </h2>
 
 <div class="container">
 
@@ -22,8 +22,8 @@ H2 { text-align: center }
                           });
                          */
                         foreach ($result as $unResultat) {
-						
-                            ?>
+							if($unResultat['Id_enfant'] != $_SESSION['id_enfant']) {
+								?>
 							
 
                             <div class="col-lg-4 col-md-6 mb-4">
@@ -73,6 +73,7 @@ H2 { text-align: center }
                                 </div>
                             </div>
     <?php
+							}
 }
 ?>
 
@@ -87,32 +88,3 @@ H2 { text-align: center }
             <!-- /.row -->
 
         </div>
-<div class="container-fluid">
-    <h2> Ajoutez un Objet </h2>
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="Nom" class="col-sm-4 control-label">Nom de votre Objet</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="Nom" name="Nom" placeholder="Nom de l'objet">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="Prix"  class="col-sm-4 control-label">Prix en points de votre Objet</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="Prix" name="Prix" placeholder="0">
-            </div>
-        </div  
-        <div class="form-group">
-            <label for="image" class="col-sm-4 control-label">Photo de votre Objet Format 700 x 700</label>
-            <div class="col-sm-8">
-                <input type="file" id="Img" name="Img" class="form-control">
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-8">
-                <input class='btn btn-primary' type="submit" name="ajouter" value="Ajouter">
-            </div>
-        </div>
-    </form>
-</div>

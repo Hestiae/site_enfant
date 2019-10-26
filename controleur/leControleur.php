@@ -42,9 +42,9 @@ class leControleur
     {
         return $this->unModele->selectInscrire();
     }
-    public function selectTicket()
+    public function  selectObjetenVente()
     {
-        return $this->unModele->selectTicket();
+        return $this->unModele-> selectObjetenVente();
     }
     public function selectTicketSup($id_partenaire)
     {
@@ -75,9 +75,9 @@ class leControleur
       {
         $this->unModele->delete($table, $tab);
       }
-      public function update($table, $tab)
+      public function update($table, $tab, $id)
       {
-        $this->unModele->update($table, $tab);
+        $this->unModele->update($table, $tab, $id);
       }
       public function insertNote($tab)
       {
@@ -86,6 +86,10 @@ class leControleur
       public function updateNote($tab,$id_note)
       {
         $this->unModele->updateNote($tab,$id_note);
+      }
+	  public function updateObjet($id_objet)
+      {
+        $this->unModele->updateObjet($id_objet);
       }
       public function selectAttribut()
       {

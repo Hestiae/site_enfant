@@ -5,6 +5,12 @@ require_once("../controleur/leControleur.php");
 $unControleur = new leControleur("localhost","maternelle","root","");
 $id_enfant = $_SESSION['id_enfant'];
 $result = $unControleur->selectObjetsByChild($id_enfant);
+if(isset($_POST["ajout"]))
+{
+		$id = $_POST['id_objet'];
+         $unControleur->updateObjet($id);
+		 header('Location: mesobjets.php');
+	  }
 if(isset($_POST["ajouter"]))
       {
          $envoi = array ("Nom"=>$_POST['Nom'], 

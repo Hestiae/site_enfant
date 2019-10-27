@@ -63,8 +63,7 @@ session_start();
         <div class="row">
           <div class="col-lg-3 col-md-6 footer-info">
             <img src="../img/logo.png" alt="TheEvenet">
-            <p>Notre Groupe est l’héritier d’une histoire plurielle, riche de défis relevés, d'innovations audacieuses et d'une solidarité forte entre les femmes et les hommes qui ont partagé cette dynamique. Orange, héritier de France Télécom, porte les valeurs d’un groupe mondial d’origine française, fier de ses racines, mais aussi fier de ses conquêtes à l’échelle du monde. Une épopée à découvrir à travers 30 moments forts et 130 dates clés qui constituent la mémoire de notre entreprise, d’hier à aujourd’hui.</p>
-          </div>
+    <p> Site de Troc de la Maternelle Coccinelle. </p>          </div>
           <div class="col-lg-3 col-md-6 footer-links">
           <h4>Liens utiles</h4>
             <ul>

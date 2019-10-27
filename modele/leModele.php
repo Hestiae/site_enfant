@@ -391,12 +391,12 @@ public function selectObjetenVente()
             return $result;
         }
     }
-    public function selectTicketSup($id_partenaire)
+    public function selectEchangebyChild($id_enfant)
     {
     if ($this->unPdo != null) {
             // selection de toutes les données
-            $requete = "select * from ticket where :id_partenaire = id_partenaire;";
-            $donnees = array(":id_partenaire"=>$id_partenaire);                    
+            $requete = "select * from echange where :id_enfant = id_enfant;";
+            $donnees = array(":id_enfant"=>$id_enfant);                    
             // preparation de la requete avant execution
             $select = $this->unPdo->prepare($requete);
             // exection de la requete
@@ -430,6 +430,51 @@ public function selectObjetenVente()
 
     }
 }
+ public function TakeBackObjet($id_objet)
+{
+    if($this->unPdo!=null)
+    {
+            $requete ="update Objet set En_vente = 0 where id_objet = :id_objet;";
+            $donnees = array(":id_objet"=>$id_objet);
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute($donnees);
+
+    }
+}
+ public function BuyObject($id_objet, $id_enfant)
+{
+    if($this->unPdo!=null)
+    {
+            $requete ="update Objet set En_vente = 0, id_enfant = :id_enfant where id_objet = :id_objet;";
+            $donnees = array(":id_objet"=>$id_objet, "id_enfant"=>$id_enfant);
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute($donnees);
+
+    }
+}
+public function UpdateSolde($id_enfant, $prix)
+{
+    if($this->unPdo!=null)
+    {
+            $requete ="update Enfant set Solde = Solde - :prix where id_enfant = :id_enfant;";
+            $donnees = array(":id_enfant"=>$id_enfant, "prix"=>$prix);
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute($donnees);
+
+    }
+}
+public function UpdateSolde2($id_enfant, $prix)
+{
+    if($this->unPdo!=null)
+    {
+            $requete ="update Enfant set Solde = Solde + :prix where id_enfant = :id_enfant;";
+            $donnees = array(":id_enfant"=>$id_enfant, "prix"=>$prix);
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute($donnees);
+
+    }
+}
+
 
 }
 

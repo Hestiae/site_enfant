@@ -26,6 +26,10 @@ class leControleur
     {
         return $this->unModele->selectObjetsByChild($id_enfant);
     }
+	public function selectEchangebyChild($id_enfant)
+      {
+          return $this->unModele->selectEchangebyChild($id_enfant);
+      }
     public function countProduit1()
     {
         return $this->unModele->countProduit1();
@@ -91,10 +95,23 @@ class leControleur
       {
         $this->unModele->updateObjet($id_objet);
       }
-      public function selectAttribut()
-      {
-          return $this->unModele->selectAttribut();
+	   public function TakeBackObjet($id_objet)
+	   {
+        $this->unModele->TakeBackObjet($id_objet);
       }
+	  public function BuyObject($id_objet, $id_enfant)
+	  {
+		  $this->unModele-> BuyObject($id_objet, $id_enfant);
+	  }
+	  public function UpdateSolde($id_enfant, $prix)
+	  {
+		  $this->unModele-> UpdateSolde($id_enfant, $prix);
+	  }
+	  public function UpdateSolde2($id_enfant, $prix)
+	  {
+		  $this->unModele-> UpdateSolde2($id_enfant, $prix);
+	  }
+      
       public function selectAttribut1()
       {
           return $this->unModele->selectAttribut1();

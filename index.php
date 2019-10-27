@@ -7,6 +7,7 @@ if(isset($_SESSION['mdp']))
       $sign = '';
       $signe = '';
       $event = 'vue/echange.php';
+	  $obj = 'vue/mesobjets.php';
     }
     else
     {
@@ -15,6 +16,7 @@ if(isset($_SESSION['mdp']))
       $sign = 'vue/inscription.php';
       $signe = 'Inscription';
       $event = 'vue/connexion.php';
+	  $obj = 'vue/connexion.php';
     }
 ?>
 <!DOCTYPE html>
@@ -45,7 +47,7 @@ if(isset($_SESSION['mdp']))
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="index.php">Accueil</a></li>
-          <li><a href="vue/mesobjets.php">Mes Objets</a></li>
+          <li><a href="<?php echo $obj; ?>">Mes Objets</a></li>
           <?php 
           /*  if(isset($_SESSION['accronyme']))
           {

@@ -59,7 +59,11 @@ H2 { text-align: center }
 																		<tr>
 																				
 																				<td> <input type="hidden" name="id_objet" value ="<?php echo $unResultat['ID_Objet']; ?>"></td>
+																				<?php if($unResultat['En_vente'] == 0){ ?>
 																				<td> <input class ='btn btn-primary' type="submit" name="ajout" value="mettre en vente"> </td>
+																				<?php } else { ?>
+																				<td> <input class ='btn btn-primary' type="submit" name="retirer" value="Retirer de la vente"> </td>
+																				<?php } ?>
 																			</tr>
 																	</form>
                                                         </div>

@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Jeu 24 Octobre 2019 à 17:03
--- Version du serveur :  5.6.26
--- Version de PHP :  5.6.12
+-- Hôte : 127.0.0.1
+-- Généré le :  Dim 27 oct. 2019 à 12:43
+-- Version du serveur :  10.1.38-MariaDB
+-- Version de PHP :  7.1.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,7 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `echange`
 --
 
-CREATE TABLE IF NOT EXISTS `echange` (
+CREATE TABLE `echange` (
   `Id_echange` int(11) NOT NULL,
   `id_donneur` int(11) NOT NULL,
   `id_recepteur` int(11) NOT NULL,
@@ -40,28 +42,27 @@ CREATE TABLE IF NOT EXISTS `echange` (
 -- Structure de la table `enfant`
 --
 
-CREATE TABLE IF NOT EXISTS `enfant` (
+CREATE TABLE `enfant` (
   `Id_enfant` int(11) NOT NULL,
   `Nom` varchar(50) NOT NULL,
   `Prenom` varchar(50) NOT NULL,
   `mdp` varchar(50) NOT NULL,
   `solde` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `enfant`
+-- Déchargement des données de la table `enfant`
 --
 
 INSERT INTO `enfant` (`Id_enfant`, `Nom`, `Prenom`, `mdp`, `solde`) VALUES
-(1, 'Maria', 'Raphaël', '123456', 100),
+(1, 'Maria', 'Rapha?l', '123456', 100),
 (2, 'Chavanne', 'Marie-Camille', '123456', 100);
 
 --
 -- Déclencheurs `enfant`
 --
 DELIMITER $$
-CREATE TRIGGER `after_insert_enfant` BEFORE INSERT ON `enfant`
- FOR EACH ROW BEGIN
+CREATE TRIGGER `after_insert_enfant` BEFORE INSERT ON `enfant` FOR EACH ROW BEGIN
     set new.solde = 100;
 END
 $$
@@ -73,24 +74,40 @@ DELIMITER ;
 -- Structure de la table `objet`
 --
 
-CREATE TABLE IF NOT EXISTS `objet` (
+CREATE TABLE `objet` (
   `ID_Objet` int(11) NOT NULL,
   `Nom` varchar(50) NOT NULL,
   `Prix` int(5) NOT NULL,
   `Img` varchar(50) NOT NULL,
   `Id_enfant` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `objet`
+-- Déchargement des données de la table `objet`
 --
 
 INSERT INTO `objet` (`ID_Objet`, `Nom`, `Prix`, `Img`, `Id_enfant`) VALUES
-(1, 'Ballon', 10, '/img/ballon_1.png', 1),
-(2, 'Yo-Yo', 15, '/img/yoyo_2.png', 2);
+(3, 'Doudou Mouton', 10, '/img/Doudou Mouton_2.png', 2),
+(4, 'Doudou Tortue', 10, '/img/Doudou Tortue_2.png', 2),
+(5, 'Lot Doudou Lapin', 20, '/img/Lot Doudou Lapin_2.png', 2),
+(6, 'Petite Voiture', 5, '/img/Petite Voiture_2.png', 2),
+(7, 'Bascule Alpaga', 20, '/img/Bascule Alpaga_2.png', 2),
+(8, 'Lot Baguettes', 10, '/img/Lot Baguettes_2.png', 2),
+(9, 'Tic Tac Tao', 5, '/img/Tic Tac Tao_2.png', 2),
+(10, 'Mouton Ã  Roulette', 10, '/img/Mouton Ã  Roulette_2.png', 2),
+(11, 'Doudou Lapin', 10, '/img/Doudou Lapin_2.png', 2),
+(12, 'Avion ', 25, '/img/Avion _1.png', 1),
+(13, 'Doudou Dragon', 10, '/img/Doudou Dragon_1.png', 1),
+(14, 'Lot Doudou ', 15, '/img/Lot Doudou _1.png', 1),
+(15, 'Doudou Elephant', 10, '/img/Doudou Elephant_1.png', 1),
+(16, 'Petite Voiture', 25, '/img/Petite Voiture_1.png', 1),
+(17, 'Bascule Dog', 15, '/img/Bascule Dog_1.png', 1),
+(18, 'Lot Doudou Elephant', 15, '/img/Lot Doudou Elephant_1.png', 1),
+(19, 'Lot Hochets', 15, '/img/Lot Hochets_1.png', 1),
+(20, 'Lot de Peluche', 10, '/img/Lot de Peluche_1.png', 1);
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -114,7 +131,7 @@ ALTER TABLE `objet`
   ADD KEY `Objet_Enfant0_FK` (`Id_enfant`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
@@ -122,18 +139,21 @@ ALTER TABLE `objet`
 --
 ALTER TABLE `echange`
   MODIFY `Id_echange` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `enfant`
 --
 ALTER TABLE `enfant`
-  MODIFY `Id_enfant` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `Id_enfant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT pour la table `objet`
 --
 ALTER TABLE `objet`
-  MODIFY `ID_Objet` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `ID_Objet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -147,6 +167,7 @@ ALTER TABLE `echange`
 --
 ALTER TABLE `objet`
   ADD CONSTRAINT `Objet_Enfant0_FK` FOREIGN KEY (`Id_enfant`) REFERENCES `enfant` (`Id_enfant`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
